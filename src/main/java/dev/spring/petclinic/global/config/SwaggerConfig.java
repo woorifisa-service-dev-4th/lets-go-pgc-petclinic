@@ -12,8 +12,8 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("PeopleGPT API")
+                        .title("PetClinic API")
                         .version("v1")
-                        .description("PeopleGPT API 문서"));
+                        .description("PetClinic API 문서"));
     }
 }
