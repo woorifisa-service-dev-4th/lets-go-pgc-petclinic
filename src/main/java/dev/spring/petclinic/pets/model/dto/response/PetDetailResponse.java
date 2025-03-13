@@ -8,9 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Getter
 @Builder
@@ -22,7 +19,12 @@ public class PetDetailResponse {
     private String name;
     private LocalDate birthDate;
     private String type;
+    
     // private List<VisitResponse> visits;
+    
+    // .visits(pet.getVisits().stream()
+    // .map(VisitResponse::from)
+    // .collect(Collectors.toList()))
 
     public static PetDetailResponse from(Pet pet) {
         return PetDetailResponse.builder()
@@ -31,11 +33,8 @@ public class PetDetailResponse {
                 .birthDate(pet.getBirthDate())
                 .type(pet.getType().getName())
                 .build();
-
-                // .visits(pet.getVisits().stream()
-                        // .map(VisitResponse::from)
-                        // .collect(Collectors.toList()))                
     }
+
     public boolean isNew() {
         return this.id == null;
     }

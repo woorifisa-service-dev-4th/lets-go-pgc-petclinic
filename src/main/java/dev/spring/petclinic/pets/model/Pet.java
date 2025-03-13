@@ -1,6 +1,5 @@
 package dev.spring.petclinic.pets.model;
 
-import dev.spring.petclinic.global.common.BaseTimeEntity;
 import dev.spring.petclinic.owners.model.Owner;
 // import dev.spring.petclinic.visits.model.Visit;
 import lombok.AllArgsConstructor;
@@ -19,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Pet extends BaseTimeEntity {
+public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
