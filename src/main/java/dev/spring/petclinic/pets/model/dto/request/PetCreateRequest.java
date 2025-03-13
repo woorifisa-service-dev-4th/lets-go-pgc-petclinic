@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 import lombok.Setter;
@@ -20,12 +22,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PetCreateRequest {
+    private Integer id;
 
     @NotBlank(message = "Pet name is required")
     @Size(min = 2, max = 30, message = "Pet name must be between 2 and 30 characters")
     private String name;
 
     @NotNull(message = "Birth date is required")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past(message = "Birth date must be in the past")
     private LocalDate birthDate;
 
@@ -33,4 +37,8 @@ public class PetCreateRequest {
     private Integer typeId;
 
     private Integer ownerId;
+
+    public boolean isNew() {
+        return true;
+    }
 }
