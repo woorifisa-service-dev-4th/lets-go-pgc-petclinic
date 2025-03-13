@@ -36,4 +36,8 @@ public class OwnerUpdateRequest {
     @NotBlank(message = "Telephone is required")
     @Pattern(regexp = "^\\d{10}$", message = "Telephone must be 10 digits")
     private String telephone;
+
+    public boolean isNew() {
+        return false; // 항상 새로운 객체로 취급
+    }        
 }

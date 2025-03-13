@@ -42,4 +42,5 @@ public class OwnerListResponse {
                 .map(OwnerListResponse::from)
                 .collect(Collectors.toList());
     }
+
 }

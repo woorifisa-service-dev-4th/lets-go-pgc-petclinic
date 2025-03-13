@@ -47,4 +47,8 @@ public class OwnerCreateRequest {
                 .telephone(telephone)
                 .build();
     }
+    
+    public boolean isNew() {
+        return true; // 항상 새로운 객체로 취급
+    }
 }
