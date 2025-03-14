@@ -71,3 +71,27 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// Add task to create an executable jar with all dependencies
+bootJar {
+    archiveClassifier = ''
+    archiveVersion = ''
+    archiveBaseName = 'petclinic'
+}
+
+// Add a task for running the application with a specific profile
+task runWithDevProfile(type: JavaExec) {
+    group = 'application'
+    description = 'Run the application with the dev profile'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'dev.spring.petclinic.PetclinicApplication'
+    args = ['--spring.profiles.active=dev']
+}
+
+task runWithProdProfile(type: JavaExec) {
+    group = 'application'
+    description = 'Run the application with the prod profile'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'dev.spring.petclinic.PetclinicApplication'
+    args = ['--spring.profiles.active=prod']
+}
