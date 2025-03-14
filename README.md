@@ -1,5 +1,10 @@
 # Frontend
-vite frontend/ --host
+sudo npm install -g vite
+cd frontend
+npm install
+
+frontend 폴더 위치에 있다면: vite --host
+root 라면 vite frontend/ --host
 
 # Backend
 
