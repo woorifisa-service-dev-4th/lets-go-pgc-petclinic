@@ -12,8 +12,8 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("PeopleGPT API")
+                        .title("petclinic API 문서")
                         .version("v1")
-                        .description("PeopleGPT API 문서"));
+                        .description("petclinic API 명세서입니다. 각 엔드포인트의 기능과 요청/응답 형식을 확인할 수 있습니다."));
     }
 }
