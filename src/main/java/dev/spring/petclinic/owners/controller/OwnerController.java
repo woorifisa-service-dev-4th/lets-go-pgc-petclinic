@@ -54,7 +54,7 @@ public class OwnerController {
     }
 
     @GetMapping
-    @Operation(summary = "성을 통한 owners 조회", description = "특정 성을 가진 owner 리스트를 조회합니다.")
+    @Operation(summary = "성을 통한 owners 조회 (페이징 적용)", description = "페이징을 적용하여 특정 성을 가진 owner 리스트를 조회합니다.")
     public ResponseEntity<PageResponse<OwnerListResponse>> findOwners(
             @Parameter(description = "성", example = "Franklin") @RequestParam(required = false) String lastName,
             @Parameter(name="page", description="현재 페이지") @RequestParam(defaultValue = "0") int page,
@@ -66,22 +66,30 @@ public class OwnerController {
     }
 
     @GetMapping("/search")
+    @Operation(summary = "성을 통한 owners 조회", description = "특정 성을 가진 owner 리스트를 조회합니다.")
     public ResponseEntity<List<OwnerListResponse>> findOwnersByLastName(
-            @RequestParam String lastName) {
+            @Parameter(description = "성", example = "Franklin") @RequestParam String lastName) {
         List<OwnerListResponse> owners = ownerGetService.findOwnersByLastName(lastName);
         return ResponseEntity.ok(owners);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OwnerDetailResponse> findOwner(@PathVariable Integer id) {
+    @Operation(summary = "id를 통한 owner 조회", description = "id를 통해 owner를 조회합니다. ")
+    public ResponseEntity<OwnerDetailResponse> findOwner(
+            @Parameter(description = "id", example = "1")
+            @PathVariable
+            Integer id) {
         OwnerDetailResponse owner = ownerGetService.findOwnerById(id);
         return ResponseEntity.ok(owner);
     }
 
 
     @PutMapping("/{id}")
+    @Operation(summary = "owner 업데이트", description = "owner 의 수정 사항을 업데이트 합니다")
     public ResponseEntity<Void> updateOwner(
+            @Parameter(description = "업데이트 할 owner 의 id", example = "1")
             @PathVariable Integer id,
+            @Parameter(description = "업데이트 요청 객체")
             @Valid @RequestBody OwnerUpdateRequest request) {
         
         ownerUpdateService.updateOwner(id, request);
