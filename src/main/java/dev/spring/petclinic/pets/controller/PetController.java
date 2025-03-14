@@ -5,6 +5,9 @@ import dev.spring.petclinic.pets.model.dto.response.PetDetailResponse;
 import dev.spring.petclinic.pets.model.dto.request.PetUpdateRequest;
 import dev.spring.petclinic.pets.model.PetType;
 import dev.spring.petclinic.pets.service.PetService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +57,12 @@ public class PetController {
         return ResponseEntity.created(location).build();
     }
 
+    @Operation(summary="Update a pet", description="Update a pet with the given ID")
+    @ApiResponses({
+        @ApiResponse(responseCode = "204", description = "No content"),
+        @ApiResponse(responseCode = "400", description = "Bad request"),
+        @ApiResponse(responseCode = "404", description = "Not found")
+    })
     @PutMapping("/pets/{id}")
     public ResponseEntity<Void> updatePet(
             @PathVariable Integer id,

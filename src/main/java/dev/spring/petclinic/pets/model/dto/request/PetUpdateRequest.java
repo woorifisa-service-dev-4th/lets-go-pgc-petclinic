@@ -21,7 +21,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PetUpdateRequest {
-    private Integer id;
 
     @NotBlank(message = "Pet name is required")
     @Size(min = 2, max = 30, message = "Pet name must be between 2 and 30 characters")
